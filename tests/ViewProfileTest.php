@@ -13,17 +13,6 @@ class ViewProfileTest extends TestCase
      */
     public function testViewProfile()
     {
-        $this->json('POST', '/user/login', [
-            'email' => 'bobbyboo@test.com',
-            'password' => 'bobbyboopass'
-            ])
-             ->seeJson([
-                'success' => true,
-             ]);
 
-        $user = Auth::guard('user')->user()
-
-        $this->actingAs($user)
-             ->get('/user');
     }
 }
