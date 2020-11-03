@@ -13,6 +13,8 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return "Good to go";
-});
+$router->group(['prefix' => 'user'], function () use ($router) {
+
+    $router->post('register', 'UserController@register');
+
+ });

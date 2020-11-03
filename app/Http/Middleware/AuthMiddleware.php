@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CorsMiddleware
+class AuthMiddleware
 {
     /**
      * Handle an incoming request.

@@ -14,6 +14,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 {
     use Authenticatable, Authorizable, HasFactory;
 
+    protected $table = "users";
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,6 +38,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
      * @return mixed
@@ -53,5 +64,22 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function createUser($request,$password_hash)
+    {
+       $data = $this->dataToCreate($request,$password_hash);
+       $this->create($data);
+    }
+
+    public function dataToCreate($request,$password_hash)
+    {
+
+        $data = [
+            "name"=>$request->name,
+            "email"=>$request->email,
+            "password"=>$password_hash
+        ];
+        return $data;
     }
 }
