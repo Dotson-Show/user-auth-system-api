@@ -17,5 +17,6 @@ $router->group(['prefix' => 'user'], function () use ($router) {
 
     $router->post('register', 'UserController@register');
     $router->post('login', 'UserController@login');
+    $router->get('view-profile','UserController@viewProfile');
 
  });

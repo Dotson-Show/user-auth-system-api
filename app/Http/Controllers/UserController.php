@@ -48,4 +48,14 @@ class UserController extends Controller
 
         return $this->respondWithToken($token);
     }
+
+    public function viewProfile()
+    {
+        return response()->json([
+            'success'=>true,
+            'user' => Auth::guard('user')->user()
+            ]
+            , 200);
+    }
+
 }
