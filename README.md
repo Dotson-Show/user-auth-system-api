@@ -4,6 +4,6 @@ This documentation can be found on https://documenter.getpostman.com/view/699896
 
 ## End Points 
 
-Register a new user
-User login and Token generate
+Register a new user |
+User login and Token generate |
 Fetch user data
